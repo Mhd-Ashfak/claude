@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink-950 text-white font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  /* Consistent, subtle focus ring for accessibility */
+  :focus-visible {
+    outline: 2px solid theme("colors.accent.soft");
+    outline-offset: 2px;
+  }
+
+  /* Tidy up native date input on dark theme */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8);
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* ---- Surfaces (flat, minimal — no heavy gradients) ---- */
+  .card {
+    @apply rounded-2xl border border-white/[0.06] bg-ink-850;
+  }
+
+  .card-hover {
+    @apply transition-colors duration-200 hover:border-white/15 hover:bg-ink-800;
+  }
+
+  /* ---- Buttons ---- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5
+           text-sm font-semibold transition-all duration-200 disabled:opacity-50
+           disabled:cursor-not-allowed select-none;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-white hover:bg-accent-soft
+           shadow-[0_6px_20px_-8px_rgba(224,36,52,0.7)];
+  }
+
+  .btn-ghost {
+    @apply btn bg-white/[0.04] text-white/90 border border-white/10 hover:bg-white/[0.08];
+  }
+
+  .btn-outline {
+    @apply btn border border-accent/60 text-accent hover:bg-accent hover:text-white;
+  }
+
+  /* ---- Form controls ---- */
+  .field-label {
+    @apply block text-sm font-medium text-white/80 mb-1.5;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-white/10 bg-ink-800 px-3.5 py-2.5
+           text-sm text-white placeholder-white/35 transition-colors
+           focus:border-accent focus:bg-ink-800/80 outline-none;
+  }
+
+  /* ---- Small section / eyebrow labels ---- */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-accent;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium;
+  }
+
+  .nav-link {
+    @apply rounded-full px-3.5 py-1.5 text-sm font-medium text-white/70
+           transition-colors hover:text-white;
+  }
+
+  .nav-link-active {
+    @apply bg-accent text-white hover:text-white;
+  }
+}
