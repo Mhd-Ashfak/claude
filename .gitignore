@@ -1,0 +1,5 @@
+node_modules
+.env
+.dbup.sh
+*.log
+.DS_Store
